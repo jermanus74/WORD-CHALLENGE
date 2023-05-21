@@ -10,7 +10,15 @@ body {
     justify-content: center;
     text-align: center;
     height: 100vh;
-    background-color: burlywood;
+      background-image: linear-gradient(
+ to right,
+    #02052e,
+    #0000ff,
+    #08737a,
+    #190bdb
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
