@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-DNsGPTeZXOBUBmNc1TsARVFLDgWdXXlBya6KX5cqIh9bZk1CZ2lk3mX+zvluM0eCHSoPUSGgI7iW3TtZT2UrMQ=="
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>Word Challege</title>
-
-</head>
-<body>
-<div class="container">
-    <h2>Word Scramble</h2>
-    <div class="content">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Word Scramble</h2>
+      <div class="content">
         <p class="word"></p>
         <div class="details">
-            <p class="hint">Hint: <span> </span></p>
-            <p class="time">Time left: <span><b>30</b>s</span></p>
+          <p class="hint">Hint: <span> </span></p>
+          <p class="time">
+            Time left: <span><b>30</b>s</span>
+          </p>
         </div>
         <div class="wrapper">
-            <input type="text" placeholder="Enter a valid word" value="">
-            <div class="btn">
-                <button class="refresh">Refresh </button>
-                <button class="check">Check </button>  
-            </div>
+          <input type="text" placeholder="Enter a valid word" value="" />
+          <div class="btn">
+            <button class="refresh">Refresh</button>
+            <button class="check">Check</button>
+          </div>
         </div>
-        
+      </div>
     </div>
-</div>
-<script src="word.js"></script>
-
-
-
-
-
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="word.js"></script>
+  </body>
 </html>
