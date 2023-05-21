@@ -735,7 +735,7 @@ var correctWord, timer;
 const showTimeUpNotification = () => {
   Toastify({
     text: `Time's up! The correct word is ${correctWord.toUpperCase()}.`,
-    duration: 5000,
+    duration: 7000,
     close: true,
     gravity: "top",
     backgroundColor: "purple",
@@ -759,7 +759,7 @@ const initTimer = (maxTime) => {
 
 const startGame = () => {
   clearInterval(timer);
-  initTimer(30);
+  initTimer(40);
   let randomObj = words[Math.floor(Math.random() * words.length)];
   let wordArray = randomObj.word.split("");
   for (let i = wordArray.length - 1; i > 0; i--) {
