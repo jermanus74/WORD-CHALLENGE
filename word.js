@@ -233,18 +233,31 @@ const words = [
 ];
 var correctWord, timer;
 
+const showTimeUpNotification = () => {
+  Toastify({
+    text: `Time's up! The correct word is ${correctWord.toUpperCase()}.`,
+    duration: 2000,
+    close: true,
+    gravity: "top",
+    backgroundColor: "purple",
+    className: "custom-toast",
+    icon: "fas fa-clock" 
+  }).showToast();
+};
+
 const initTimer = (maxTime) => {
   timer = setInterval(() => {
     if (maxTime > 0) {
       maxTime--;
-      return (timeText.innerText = maxTime);
+      timeText.innerText = maxTime;
     } else {
       clearInterval(timer);
-      alert(`Time's up! The correct word was ${correctWord.toUpperCase()}`);
+      showTimeUpNotification(); 
       startGame();
     }
   }, 1000);
 };
+
 const startGame = () => {
   clearInterval(timer);
   initTimer(30);
@@ -260,21 +273,46 @@ const startGame = () => {
   inputField.value = "";
   inputField.setAttribute("maxlength", correctWord.length);
 };
+
 const checkWord = () => {
   let userWord = inputField.value.toLowerCase();
   if (!userWord) {
-    alert("Please enter a word to check.");
+    Toastify({
+      text: "Please enter a word to check.",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      backgroundColor: "orange",
+      className: "custom-toast",
+      icon: "fas fa-exclamation-circle" 
+    }).showToast();
     return;
   }
-  if (userWord == correctWord) {
-    alert(`Congratulations! ${userWord.toUpperCase()} is the correct word!`);
+  if (userWord === correctWord) {
+    Toastify({
+      text: `Congratulations! ${userWord.toUpperCase()} is the correct word!`,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      backgroundColor: "green",
+      className: "custom-toast",
+      icon: "fas fa-check-circle" 
+    }).showToast();
   } else {
-    alert(`Oops! ${userWord.toUpperCase()} is not the correct word.`);
+    Toastify({
+      text: `Oops! ${userWord.toUpperCase()} is not the correct word.`,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      backgroundColor: "red",
+      className: "custom-toast",
+      icon: "fas fa-exclamation-triangle" 
+    }).showToast();
     return;
   }
   startGame();
 };
-
 startGame();
 check.addEventListener("click", checkWord);
 refresh.addEventListener("click", startGame);
+
