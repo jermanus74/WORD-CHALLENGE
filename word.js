@@ -236,7 +236,7 @@ var correctWord, timer;
 const showTimeUpNotification = () => {
   Toastify({
     text: `Time's up! The correct word is ${correctWord.toUpperCase()}.`,
-    duration: 2000,
+    duration: 5000,
     close: true,
     gravity: "top",
     backgroundColor: "purple",
