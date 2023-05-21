@@ -5,231 +5,730 @@ const check = document.querySelector(".check");
 const inputField = document.querySelector("input");
 const timeText = document.querySelector(".time b");
 const words = [
-  { word: "Giraffe", hint: "Tallest land animal" },
-  { word: "Piano", hint: "Musical instrument with black and white keys" },
-  { word: "Soccer", hint: "Sport played with a round ball" },
-  { word: "Coffee", hint: "Popular hot beverage" },
-  { word: "Rainbow", hint: "Multicolored natural phenomenon" },
-  { word: "Dolphin", hint: "Intelligent marine mammal" },
-  { word: "Sunflower", hint: "Tall plant with bright yellow petals" },
-  { word: "Chocolate", hint: "Sweet treat made from cacao beans" },
-  { word: "Eiffel Tower", hint: "Iconic Parisian landmark" },
-  { word: "Unicorn", hint: "Mythical creature with a horn on its forehead" },
-  { word: "Laptop", hint: "Portable computer" },
-  { word: "Elephant", hint: "Large land mammal with a trunk" },
-  { word: "Pizza", hint: "Round food with various toppings" },
-  { word: "Moon", hint: "Natural satellite of Earth" },
-  { word: "Bicycle", hint: "Two-wheeled vehicle" },
-  { word: "Guitar", hint: "Stringed musical instrument" },
-  { word: "Butterfly", hint: "Colorful insect with delicate wings" },
-  { word: "Beach", hint: "Sandy shoreline by the sea" },
-  { word: "Camera", hint: "Device used to capture photos" },
-  { word: "Diamond", hint: "Precious gemstone" },
-  { word: "Tiger", hint: "Large carnivorous cat" },
-  { word: "Library", hint: "Place with books and reading materials" },
-  { word: "Dragon", hint: "Mythical creature with wings and scales" },
-  { word: "Banana", hint: "Yellow fruit with a peel" },
-  { word: "Telescope", hint: "Device for viewing distant objects" },
-  { word: "Fireworks", hint: "Explosive displays of light and color" },
-  { word: "Zebra", hint: "Black and white striped animal" },
-  { word: "Bridge", hint: "Structure that connects two points" },
-  { word: "Watermelon", hint: "Juicy fruit with a green rind" },
-  { word: "Rain", hint: "Precipitation from the sky" },
-  { word: "Castle", hint: "Fortified structure associated with royalty" },
-  { word: "Eagle", hint: "Large bird of prey" },
-  { word: "Chess", hint: "Board game with strategic moves" },
-  { word: "Star", hint: "Luminous celestial body" },
-  { word: "Ship", hint: "Large watercraft for transportation" },
-  { word: "Apple", hint: "Fruit often associated with teachers" },
-  { word: "Train", hint: "Vehicle that runs on tracks" },
-  { word: "Desert", hint: "Arid and sandy biome" },
-  { word: "Lion", hint: "King of the jungle" },
-  { word: "School", hint: "Institution for learning" },
-  { word: "Surreptitious", hint: "Secretive or stealthy" },
-  { word: "Exacerbate", hint: "To make a situation worse" }, 
-  { word: "Research", hint: "The systematic investigation and study of materials and sources to gain knowledge and understanding" },
-  { word: "Analysis", hint: "The process of examining something in detail to understand its components and relationships" },
-  { word: "Hypothesis", hint: "A proposed explanation or prediction based on limited evidence, serving as a starting point for further investigation" },
-  { word: "Experiment", hint: "A carefully designed and controlled procedure carried out to test a hypothesis or gather data" },
-  { word: "Data", hint: "Facts, statistics, or information collected and used for analysis or reference" },
-  { word: "Conclusion", hint: "A judgment or decision reached based on evidence and reasoning" },
-  { word: "Literature", hint: "Written works, such as books, articles, or journals, on a particular subject or of a specific genre" },
-  { word: "Citation", hint: "A reference to a source of information or authority in an academic or scholarly work" },
-  { word: "Plagiarism", hint: "The act of using someone else's work, ideas, or words without giving proper credit or acknowledgment" },
-  { word: "Peer Review", hint: "The evaluation and assessment of scholarly work by experts in the same field" },
-  { word: "Theory", hint: "A well-substantiated explanation or framework that explains phenomena based on empirical evidence" },
-  { word: "Variable", hint: "A factor or element that can change or vary in an experiment or study" },
-  { word: "Quantitative", hint: "Relating to or involving the measurement of quantity or amount" },
-  { word: "Qualitative", hint: "Relating to or involving qualities, characteristics, or subjective observations" },
-  { word: "Abstract", hint: "A brief summary or overview of a research paper or article" },
-  { word: "Methodology", hint: "The systematic approach or set of methods used in a particular area of study" },
-  { word: "Survey", hint: "A method of gathering information or data by asking questions to a group of people" },
-  { word: "Analysis", hint: "The process of examining something in detail to understand its components and relationships" },
-  { word: "Experiment", hint: "A carefully designed and controlled procedure carried out to test a hypothesis or gather data" },
-  { word: "Correlation", hint: "A statistical measure that indicates the extent to which two or more variables are related or associated" },
-  { word: "Bias", hint: "Prejudice or favoritism that influences the interpretation or presentation of information or data" },
-  { word: "Sampling", hint: "The process of selecting a subset of individuals or items from a larger population for study or analysis" },
-  { word: "Validity", hint: "The extent to which a measure or research study accurately captures or measures what it intends to" },
-  { word: "Reliability", hint: "The consistency, stability, or repeatability of results or measurements in a research study" },
-  { word: "Ethics", hint: "Moral principles and guidelines that govern appropriate conduct in research and academic work" },
-  { word: "Statistical", hint: "Relating to the collection, analysis, interpretation, presentation, or organization of data" },
-  { word: "Experiment", hint: "A carefully designed and controlled procedure carried out to test a hypothesis or gather data" },
-  { word: "Literature", hint: "Written works, such as books, articles, or journals, on a particular subject or of a specific genre" },
-  { word: "Citation", hint: "A reference to a source of information or authority in an academic or scholarly work" },
-  { word: "Plagiarism", hint: "The act of using someone else's work, ideas, or words without giving proper credit or acknowledgment" },
-  { word: "Peer Review", hint: "The evaluation and assessment of scholarly work by experts in the same field" },
-  { word: "Theory", hint: "A well-substantiated explanation or framework that explains phenomena based on empirical evidence" },
-  { word: "Variable", hint: "A factor or element that can change or vary in an experiment or study" },
-  { word: "Quantitative", hint: "Relating to or involving the measurement of quantity or amount" },
-  { word: "Qualitative", hint: "Relating to or involving qualities, characteristics, or subjective observations" },
-  { word: "Abstract", hint: "A brief summary or overview of a research paper or article" },
-  { word: "Methodology", hint: "The systematic approach or set of methods used in a particular area of study" },
-  { word: "Survey", hint: "A method of gathering information or data by asking questions to a group of people" },
-  { word: "Analysis", hint: "The process of examining something in detail to understand its components and relationships" },
-  { word: "Experiment", hint: "A carefully designed and controlled procedure carried out to test a hypothesis or gather data" },
-  { word: "Correlation", hint: "A statistical measure that indicates the extent to which two or more variables are related or associated" },
-  { word: "Bias", hint: "Prejudice or favoritism that influences the interpretation or presentation of information or data" },
-  { word: "Sampling", hint: "The process of selecting a subset of individuals or items from a larger population for study or analysis" },
-  { word: "Validity", hint: "The extent to which a measure or research study accurately captures or measures what it intends to" },
-  { word: "Reliability", hint: "The consistency, stability, or repeatability of results or measurements in a research study" },
-  { word: "Ethics", hint: "Moral principles and guidelines that govern appropriate conduct in research and academic work" },
-  { word: "Statistical", hint: "Relating to the collection, analysis, interpretation, presentation, or organization of data" },
   {
-    word: "Quintessential",
-    hint: "Representing the most typical example or quality",
-  },
-  { word: "hello", hint: "people's greeting" },
-  { word: "biology", hint: "The study of living organisms" },
-  { word: "evolution", hint: "Process of gradual change in species over time" },
-  {
-    word: "ecosystem",
-    hint: "A community of living organisms and their environment",
-  },
-  { word: "genetics", hint: "The study of genes and heredity" },
-  {
-    word: "photosynthesis",
-    hint: "Process by which plants convert sunlight into energy",
+    word: "Chelsea",
+    hint: "English football club with a strong presence in both domestic and European competitions",
   },
   {
-    word: "respiration",
-    hint: "Process of inhaling oxygen and exhaling carbon dioxide",
+    word: "Arsenal",
+    hint: "English football club based in London known for its attractive style of play",
   },
   {
-    word: "biodiversity",
-    hint: "Variety of different species in an ecosystem",
+    word: "AC Milan",
+    hint: "Italian football club with a successful history and iconic red and black stripes",
   },
   {
-    word: "mitosis",
-    hint: "Cell division resulting in two identical daughter cells",
-  },
-  { word: "mutation", hint: "A change in the DNA sequence of a gene" },
-  {
-    word: "adaptation",
-    hint: "A trait that helps an organism survive and reproduce",
-  },
-  { word: "taxonomy", hint: "Science of classifying and naming organisms" },
-  {
-    word: "ecology",
-    hint: "Study of interactions among organisms and their environment",
-  },
-  { word: "Ubiquitous", hint: "Being present or found everywhere" },
-  {
-    word: "Esoteric",
-    hint: "Intended for or understood by only a small group",
-  },
-  { word: "Perfunctory", hint: "Done with minimal effort or thought" },
-  { word: "Meticulous", hint: "Showing great attention to detail" },
-  {
-    word: "Sagacious",
-    hint: "Having good judgment or keen mental discernment",
-  },
-  { word: "Ephemeral", hint: "Lasting for a very short time" },
-  { word: "Copious", hint: "Abundant in quantity or number" },
-  { word: "Panacea", hint: "A remedy that is supposed to cure all diseases" },
-  {
-    word: "Pernicious",
-    hint: "Having a harmful effect, especially in a gradual or subtle way",
+    word: "Inter Milan",
+    hint: "Italian football club that shares a stadium with AC Milan",
   },
   {
-    word: "Reticent",
-    hint: "Not revealing one's thoughts or feelings readily",
+    word: "Tottenham Hotspur",
+    hint: "English football club known for its attacking style and rivalry with Arsenal",
   },
   {
-    word: "Fastidious",
-    hint: "Very attentive to and concerned about accuracy and detail",
+    word: "Borussia Dortmund",
+    hint: "German football club with a passionate fan base known as the Yellow Wall",
   },
   {
-    word: "Capricious",
-    hint: "Given to sudden and unaccountable changes of mood or behavior",
-  },
-  { word: "Vexatious", hint: "Causing annoyance, frustration, or worry" },
-  {
-    word: "Sycophant",
-    hint: "A person who acts obsequiously toward someone important to gain advantage",
-  },
-  { word: "Parsimonious", hint: "Excessively frugal or stingy" },
-  {
-    word: "Ambivalent",
-    hint: "Having mixed feelings or contradictory ideas about something or someone",
+    word: "Atletico Madrid",
+    hint: "Spanish football club that has been a strong competitor in La Liga",
   },
   {
-    word: "Taciturn",
-    hint: "Reserved or uncommunicative in speech; saying little",
+    word: "Sevilla",
+    hint: "Spanish football club with a successful history in domestic and European competitions",
   },
   {
-    word: "Quagmire",
-    hint: "A difficult or precarious situation; a swampy or muddy area",
+    word: "Ajax",
+    hint: "Dutch football club with a renowned youth academy and a history of success",
   },
   {
-    word: "Serendipity",
-    hint: "The occurrence of events by chance in a happy or beneficial way",
-  },
-  { word: "Indubitable", hint: "Impossible to doubt; unquestionable" },
-  {
-    word: "Quixotic",
-    hint: "Exceedingly idealistic; unrealistic and impractical",
+    word: "Benfica",
+    hint: "Portuguese football club with a large fan base and a rich history",
   },
   {
-    word: "Ineffable",
-    hint: "Too great or extreme to be expressed or described in words",
-  },
-  { word: "Nefarious", hint: "Wicked or criminal in nature; evil" },
-  { word: "Ebullient", hint: "Cheerful and full of energy" },
-  {
-    word: "Malfeasance",
-    hint: "Wrongdoing or misconduct, especially by a public official",
+    word: "Porto",
+    hint: "Portuguese football club known for its success in European competitions",
   },
   {
-    word: "Idiosyncrasy",
-    hint: "A distinctive or peculiar feature or characteristic of a person or thing",
+    word: "Marseille",
+    hint: "French football club with a passionate fan base and a history of success",
   },
-  { word: "Inexorable", hint: "Impossible to stop or prevent" },
+  { word: "Roma", hint: "Italian football club based in Rome" },
   {
-    word: "Superfluous",
-    hint: "Exceeding what is necessary or required; extra",
+    word: "Napoli",
+    hint: "Italian football club based in Naples known for its passionate fan base",
   },
-  { word: "Plethora", hint: "A large or excessive amount of something" },
-  { word: "football", hint: "Popular sport played with a round ball" },
-  { word: "basketball", hint: "Sport played with a hoop and a ball" },
-  { word: "tennis", hint: "Racket sport played on a court" },
-  { word: "volleyball", hint: "Game played with a ball and a net" },
-  { word: "swimming", hint: "Activity of propelling oneself through water" },
-  { word: "golf", hint: "Sport played on a course with clubs and a ball" },
-  { word: "baseball", hint: "Bat-and-ball game played between two teams" },
-  { word: "soccer", hint: "Sport played with a round ball" },
   {
-    word: "hockey",
-    hint: "Game played on ice or field with sticks and a puck",
+    word: "Boca Juniors",
+    hint: "Argentinian football club with a strong rivalry with River Plate",
   },
-  { word: "cricket", hint: "Bat-and-ball game played with two teams" },
-  { word: "rugby", hint: "Sport played with an oval ball" },
-  { word: "badminton", hint: "Racket sport played with a shuttlecock" },
-  { word: "cycling", hint: "Activity of riding a bicycle" },
-  { word: "boxing", hint: "Combat sport involving punching and defense" },
-  { word: "wrestling", hint: "Sport of grappling and throwing opponents" },
-  { word: "athletics", hint: "Collection of sports events and competitions" },
-  { word: "skiing", hint: "Activity of gliding on snow with skis" },
-  { word: "gymnastics", hint: "Sport of exercises and performances" },
+  {
+    word: "Love",
+    hint: "A deep affection and emotional attachment towards someone or something",
+  },
+  {
+    word: "Romance",
+    hint: "A feeling of excitement and attraction in a relationship",
+  },
+  {
+    word: "Passion",
+    hint: "Intense enthusiasm and desire for someone or something",
+  },
+  { word: "Affection", hint: "Fondness and tenderness towards someone" },
+  {
+    word: "Devotion",
+    hint: "Dedication and loyalty towards someone or something",
+  },
+  { word: "Adoration", hint: "Deep love and admiration for someone" },
+  {
+    word: "Desire",
+    hint: "A strong longing or craving for someone or something",
+  },
+  {
+    word: "Attraction",
+    hint: "A feeling of being drawn towards someone or something",
+  },
+  {
+    word: "Intimacy",
+    hint: "Close and personal connection or familiarity in a relationship",
+  },
+  {
+    word: "Caring",
+    hint: "Showing concern, kindness, and consideration towards someone",
+  },
+  {
+    word: "Companion",
+    hint: "A person who provides support, friendship, and company",
+  },
+  {
+    word: "Soulmate",
+    hint: "A person ideally suited for another in terms of compatibility and deep connection",
+  },
+  { word: "Happiness", hint: "A state of joy, contentment, and satisfaction" },
+  { word: "Joy", hint: "A feeling of great happiness and delight" },
+  { word: "Bliss", hint: "Extreme happiness and spiritual joy" },
+  {
+    word: "Commitment",
+    hint: "A dedicated and lasting promise or obligation in a relationship",
+  },
+  {
+    word: "Trust",
+    hint: "Confidence and reliance on someone's integrity, honesty, and reliability",
+  },
+  {
+    word: "Support",
+    hint: "Assistance, encouragement, and backing in a relationship",
+  },
+  {
+    word: "Understanding",
+    hint: "Empathy, comprehension, and acceptance in a relationship",
+  },
+  {
+    word: "Communication",
+    hint: "The exchange of thoughts, feelings, and information between individuals",
+  },
+  {
+    word: "Connection",
+    hint: "A deep emotional or intellectual bond with someone",
+  },
+  { word: "Romantic", hint: "Expressing or involving love and affection" },
+  {
+    word: "Infatuation",
+    hint: "Intense but short-lived passion or admiration for someone",
+  },
+  {
+    word: "Longing",
+    hint: "A strong desire or yearning for someone or something",
+  },
+  {
+    word: "Crush",
+    hint: "A brief but intense infatuation or attraction towards someone",
+  },
+  {
+    word: "Fondness",
+    hint: "A warm and affectionate liking for someone or something",
+  },
+  {
+    word: "Kiss",
+    hint: "A physical expression of love and affection through lip contact",
+  },
+  {
+    word: "Hug",
+    hint: "A tight embrace or cuddle expressing affection and comfort",
+  },
+  {
+    word: "Romanticize",
+    hint: "To idealize or make something appear more romantic or desirable",
+  },
+  { word: "Tender", hint: "Showing gentleness, kindness, and affection" },
+  {
+    word: "Cell",
+    hint: "The basic structural and functional unit of all living organisms",
+  },
+  {
+    word: "DNA",
+    hint: "Deoxyribonucleic acid, a molecule that carries genetic information in cells",
+  },
+  {
+    word: "Gene",
+    hint: "A segment of DNA that contains the instructions for building a specific protein",
+  },
+  {
+    word: "Chromosome",
+    hint: "A thread-like structure made of DNA and proteins, carrying genetic information",
+  },
+  {
+    word: "Mitochondria",
+    hint: "Organelles responsible for generating energy in eukaryotic cells",
+  },
+  {
+    word: "Nucleus",
+    hint: "The central organelle of a cell, containing the genetic material",
+  },
+  {
+    word: "Protein",
+    hint: "A large biomolecule made up of amino acids, essential for the structure and function of cells",
+  },
+  {
+    word: "Enzyme",
+    hint: "A protein that speeds up chemical reactions in cells",
+  },
+  {
+    word: "ATP",
+    hint: "Adenosine triphosphate, a molecule used as the primary energy source in cells",
+  },
+  {
+    word: "Photosynthesis",
+    hint: "The process by which plants convert sunlight into chemical energy",
+  },
+  {
+    word: "Respiration",
+    hint: "The process by which cells break down glucose to release energy",
+  },
+  {
+    word: "Evolution",
+    hint: "The process of gradual change in species over time",
+  },
+  {
+    word: "Mutation",
+    hint: "A change in the DNA sequence of a gene, resulting in genetic variation",
+  },
+  {
+    word: "Heredity",
+    hint: "The passing of traits from parents to offspring through genetic information",
+  },
+  {
+    word: "Adaptation",
+    hint: "A characteristic or behavior that helps an organism survive and reproduce in its environment",
+  },
+  {
+    word: "Ecology",
+    hint: "The study of the interactions between organisms and their environment",
+  },
+  {
+    word: "Food chain",
+    hint: "A sequence of organisms where each is a source of energy for the next",
+  },
+  {
+    word: "Ecosystem",
+    hint: "A community of organisms and their physical environment, interacting as a system",
+  },
+  {
+    word: "Hormone",
+    hint: "A chemical messenger produced by glands that regulates various bodily functions",
+  },
+  {
+    word: "Immunity",
+    hint: "The ability of an organism to resist infection and disease",
+  },
+  {
+    word: "Antibody",
+    hint: "A protein produced by the immune system to recognize and neutralize foreign substances",
+  },
+  {
+    word: "Virus",
+    hint: "A microscopic infectious agent that replicates inside living cells",
+  },
+  {
+    word: "Bacteria",
+    hint: "Microscopic single-celled organisms, some of which can cause diseases",
+  },
+  {
+    word: "Fungi",
+    hint: "A kingdom of organisms that includes mushrooms, yeasts, and molds",
+  },
+  {
+    word: "Protist",
+    hint: "A diverse group of eukaryotic microorganisms, including amoebas and algae",
+  },
+  {
+    word: "Reproduction",
+    hint: "The process by which organisms produce offspring",
+  },
+  {
+    word: "Sexual reproduction",
+    hint: "Reproduction involving the fusion of gametes from two parents",
+  },
+  {
+    word: "Asexual reproduction",
+    hint: "Reproduction without the involvement of gametes or the union of parents",
+  },
+  {
+    word: "Meiosis",
+    hint: "Cell division that produces gametes with half the number of chromosomes",
+  },
+
+  {
+    word: "Lion",
+    hint: "The king of the jungle known for its majestic appearance and loud roar",
+  },
+  {
+    word: "Elephant",
+    hint: "A large mammal with a long trunk and tusks, known for its intelligence and memory",
+  },
+  {
+    word: "Tiger",
+    hint: "A large carnivorous feline with distinctive stripes",
+  },
+  {
+    word: "Giraffe",
+    hint: "A tall African mammal with a long neck and spotted coat",
+  },
+  {
+    word: "Monkey",
+    hint: "An intelligent and agile primate known for its ability to climb trees",
+  },
+  {
+    word: "Kangaroo",
+    hint: "A marsupial from Australia known for its powerful hind legs and pouch",
+  },
+  {
+    word: "Penguin",
+    hint: "A flightless bird that lives in cold regions and has a distinctive black and white plumage",
+  },
+  {
+    word: "Dolphin",
+    hint: "A highly intelligent marine mammal known for its playful behavior and echolocation abilities",
+  },
+  {
+    word: "Ostrich",
+    hint: "A large flightless bird with long legs and a long neck",
+  },
+  {
+    word: "Crocodile",
+    hint: "A large reptile with a long snout, sharp teeth, and a tough armored skin",
+  },
+  {
+    word: "Gorilla",
+    hint: "The largest species of primate known for its strength and living in family groups",
+  },
+  {
+    word: "Koala",
+    hint: "A small arboreal marsupial native to Australia, known for its cuddly appearance",
+  },
+  {
+    word: "Horse",
+    hint: "A large mammal with hooves, often domesticated and used for riding or pulling carts",
+  },
+  {
+    word: "Dog",
+    hint: "A domesticated carnivorous mammal, known for its loyalty and companionship to humans",
+  },
+  {
+    word: "Cat",
+    hint: "A small carnivorous mammal, often kept as a pet, known for its independence and agility",
+  },
+  {
+    word: "Wolf",
+    hint: "A carnivorous mammal that lives and hunts in packs, known for its social structure and howling",
+  },
+  {
+    word: "Bear",
+    hint: "A large mammal with a heavy build and shaggy fur, found in various habitats around the world",
+  },
+  {
+    word: "Fox",
+    hint: "A small carnivorous mammal with a bushy tail and a clever reputation",
+  },
+  {
+    word: "Squirrel",
+    hint: "A small arboreal rodent known for its bushy tail and hoarding behavior",
+  },
+  {
+    word: "Rabbit",
+    hint: "A small herbivorous mammal with long ears and a fluffy tail",
+  },
+  {
+    word: "Deer",
+    hint: "A graceful and agile herbivorous mammal, often with antlers on the males",
+  },
+  {
+    word: "Eagle",
+    hint: "A large bird of prey known for its keen eyesight and powerful flight",
+  },
+  {
+    word: "Owl",
+    hint: "A nocturnal bird of prey known for its silent flight and hooting sound",
+  },
+  {
+    word: "Shark",
+    hint: "A large predatory fish with a streamlined body and sharp teeth",
+  },
+  {
+    word: "Turtle",
+    hint: "A reptile with a bony or leathery shell, typically found in water",
+  },
+  {
+    word: "Snake",
+    hint: "A long, legless reptile that moves by slithering on the ground",
+  },
+  {
+    word: "Butterfly",
+    hint: "An insect with colorful wings and a slender body, known for its fluttering flight",
+  },
+  {
+    word: "Bee",
+    hint: "A flying insect known for its role in pollination and producing honey",
+  },
+  {
+    word: "Ant",
+    hint: "A small social insect that lives in colonies and is known for its teamwork",
+  },
+
+  {
+    word: "Goal",
+    hint: "When the ball crosses the goal line between the goalposts and beneath the crossbar",
+  },
+  {
+    word: "Corner Kick",
+    hint: "A set-piece taken from the corner of the field by the attacking team",
+  },
+  {
+    word: "Penalty Kick",
+    hint: "A free kick taken from the penalty spot, awarded for a foul committed inside the penalty area",
+  },
+  {
+    word: "Offside",
+    hint: "A player is in an offside position if they are nearer to the opponent's goal line than both the ball and the second-to-last defender when the ball is played to them",
+  },
+  {
+    word: "Yellow Card",
+    hint: "A cautionary card shown by the referee to a player as a warning for a minor offense",
+  },
+  {
+    word: "Red Card",
+    hint: "An expulsion card shown by the referee to a player for a serious offense, resulting in the player being sent off the field",
+  },
+  {
+    word: "Free Kick",
+    hint: "A direct or indirect kick awarded to a team due to a foul committed by the opposing team",
+  },
+  {
+    word: "Throw-in",
+    hint: "A method of restarting play when the ball goes out of bounds over the sidelines",
+  },
+  {
+    word: "Dribble",
+    hint: "Moving the ball along the ground while maintaining control with short taps or touches",
+  },
+  {
+    word: "Pass",
+    hint: "A deliberate transfer of the ball from one player to another",
+  },
+  { word: "Header", hint: "Using the head to strike the ball" },
+  {
+    word: "Tackle",
+    hint: "A defensive move to dispossess an opponent of the ball",
+  },
+  {
+    word: "Foul",
+    hint: "A violation of the rules committed by a player, resulting in a free kick or penalty",
+  },
+  { word: "Cross", hint: "A pass played into the penalty area from out wide" },
+  {
+    word: "Save",
+    hint: "A goalkeeper's act of preventing the ball from entering the goal",
+  },
+  {
+    word: "Penalty Shootout",
+    hint: "A tiebreaker method used to determine the winner of a match that ends in a draw after regulation time and extra time",
+  },
+  {
+    word: "Goalkeeper",
+    hint: "The player positioned in front of the goal to prevent the opposing team from scoring",
+  },
+  {
+    word: "Midfielder",
+    hint: "A player positioned in the middle of the field who primarily focuses on distributing the ball and transitioning between defense and attack",
+  },
+  {
+    word: "Striker",
+    hint: "An offensive player whose primary role is to score goals",
+  },
+  {
+    word: "Defender",
+    hint: "A player positioned primarily to prevent the opposing team from scoring",
+  },
+  {
+    word: "Captain",
+    hint: "The designated leader of a team, often responsible for communication with the referee and making decisions on the field",
+  },
+  {
+    word: "Substitution",
+    hint: "The act of replacing a player on the field with a substitute player",
+  },
+  {
+    word: "Injury Time",
+    hint: "Additional time added to the end of each half to compensate for time lost due to injuries and other stoppages",
+  },
+  {
+    word: "Half-time",
+    hint: "The break between the first and second halves of a match",
+  },
+  {
+    word: "Extra Time",
+    hint: "Additional playing time added to a match if the score is tied at the end of regulation time",
+  },
+  {
+    word: "Referee",
+    hint: "The official who enforces the rules of the game and makes decisions on fouls, cards, and other infractions",
+  },
+  {
+    word: "Assistant Referee",
+    hint: "The official positioned along the sidelines to assist the referee in making decisions, particularly in relation to offside",
+  },
+  {
+    word: "Goal Line",
+    hint: "The boundary line between the goalposts, extending vertically above the ground",
+  },
+  {
+    word: "Crossbar",
+    hint: "The horizontal bar that connects the goalposts at the top",
+  },
+  {
+    word: "Stadium",
+    hint: "The venue where football matches are played, typically equipped with seating for spectators",
+  },
+  {
+    word: "League",
+    hint: "A competition in which a number of teams play against each other over a specified period to determine a champion",
+  },
+  {
+    word: "Cup",
+    hint: "A knockout competition played among multiple teams, typically resulting in a champion",
+  },
+  {
+    word: "Final",
+    hint: "The last match of a competition, determining the ultimate winner",
+  },
+  {
+    word: "Manager",
+    hint: "The person in charge of overseeing a team's training, tactics, and player selection",
+  },
+  {
+    word: "FIFA",
+    hint: "Fédération Internationale de Football Association, the governing body of international football",
+  },
+  {
+    word: "Referee's Whistle",
+    hint: "The whistle blown by the referee to signal the start, stop, or restart of play",
+  },
+  {
+    word: "Wall",
+    hint: "A group of defending players who stand close together, forming a barrier to block a free kick or penalty kick",
+  },
+  {
+    word: "Curl",
+    hint: "A technique used to make the ball deviate from a straight path by imparting spin",
+  },
+  {
+    word: "Injury",
+    hint: "Physical harm or damage that prevents a player from participating in a match",
+  },
+  {
+    word: "Passing Accuracy",
+    hint: "The percentage of successful passes a player makes",
+  },
+  {
+    word: "Counterattack",
+    hint: "A quick offensive move by a team to take advantage of an opponent's vulnerable defensive position",
+  },
+  {
+    word: "Penalty Area",
+    hint: "The rectangular area in front of the goal where certain fouls committed by the defending team result in a penalty kick",
+  },
+  {
+    word: "Cautions",
+    hint: "Yellow cards shown to players as a warning for unsporting behavior or other offenses",
+  },
+  {
+    word: "Injury Prevention",
+    hint: "Measures taken to minimize the risk of player injuries during a match or training",
+  },
+  {
+    word: "Nutmeg",
+    hint: "A skill move in which the ball is played through the legs of an opponent",
+  },
+  {
+    word: "Pitch",
+    hint: "The playing surface where football matches are held, typically made of grass or artificial turf",
+  },
+  {
+    word: "Shirt Number",
+    hint: "The number worn on a player's jersey, typically used for identification",
+  },
+  {
+    word: "Yellow-Red Card",
+    hint: "A card shown to a player who has already received a yellow card, resulting in their expulsion from the match",
+  },
+  {
+    word: "Defensive Line",
+    hint: "The line formed by the defenders to protect their goal",
+  },
+  {
+    word: "Attacking",
+    hint: "The act of mounting an offensive play in order to score a goal",
+  },
+  {
+    word: "Clearance",
+    hint: "A defensive move to kick or head the ball away from the vicinity of the goal",
+  },
+  {
+    word: "Barcelona",
+    hint: "Spanish football club known for its tiki-taka style",
+  },
+  {
+    word: "Real Madrid",
+    hint: "Spanish football club with a rich history and numerous Champions League titles",
+  },
+  {
+    word: "Manchester United",
+    hint: "English football club with a strong fan base and successful history",
+  },
+  {
+    word: "Bayern Munich",
+    hint: "German football club that dominates the Bundesliga",
+  },
+  {
+    word: "Liverpool",
+    hint: "English football club known for its passionate fan base and successful European campaigns",
+  },
+  {
+    word: "Juventus",
+    hint: "Italian football club with a string of Serie A titles",
+  },
+  {
+    word: "Paris Saint-Germain",
+    hint: "French football club backed by Qatari ownership and known for its star-studded squad",
+  },
+  {
+    word: "Manchester City",
+    hint: "English football club that has risen to prominence in recent years",
+  },
+
+  {
+    word: "River Plate",
+    hint: "Argentinian football club with a strong rivalry with Boca Juniors",
+  },
+  { word: "Flamengo", hint: "Brazilian football club with a large fan base" },
+  {
+    word: "Santos",
+    hint: "Brazilian football club known for producing legendary player Pelé",
+  },
+  { word: "Celtic", hint: "Scottish football club with a passionate fan base" },
+  {
+    word: "Rangers",
+    hint: "Scottish football club with a strong rivalry with Celtic",
+  },
+  {
+    word: "Galatasaray",
+    hint: "Turkish football club with a passionate fan base",
+  },
+  {
+    word: "Fenerbahce",
+    hint: "Turkish football club based in Istanbul with a strong following",
+  },
+  {
+    word: "Lionel Messi",
+    hint: "Argentine forward who spent most of his career at Barcelona",
+  },
+  {
+    word: "Cristiano Ronaldo",
+    hint: "Portuguese forward known for his incredible goal-scoring record",
+  },
+  {
+    word: "Neymar Jr.",
+    hint: "Brazilian forward who played for Barcelona and now represents Paris Saint-Germain",
+  },
+  {
+    word: "Robert Lewandowski",
+    hint: "Polish striker who plays for Bayern Munich and holds numerous goal-scoring records",
+  },
+  {
+    word: "Mohamed Salah",
+    hint: "Egyptian forward who plays for Liverpool and has been instrumental in their recent success",
+  },
+  {
+    word: "Kylian Mbappé",
+    hint: "French forward who plays for Paris Saint-Germain and is known for his speed and skill",
+  },
+  {
+    word: "Kevin De Bruyne",
+    hint: "Belgian midfielder who plays for Manchester City and is known for his passing ability",
+  },
+  {
+    word: "N'Golo Kanté",
+    hint: "French midfielder who has been a key player for both Chelsea and the French national team",
+  },
+  {
+    word: "Virgil van Dijk",
+    hint: "Dutch defender who plays for Liverpool and is considered one of the best center-backs in the world",
+  },
+  {
+    word: "Manuel Neuer",
+    hint: "German goalkeeper who has been a stalwart for Bayern Munich and the German national team",
+  },
+
+  {
+    word: "Sergio Ramos",
+    hint: "Spanish defender who was the long-time captain of Real Madrid",
+  },
+  {
+    word: "Harry Kane",
+    hint: "English striker who plays for Tottenham Hotspur and the England national team",
+  },
+  {
+    word: "Antoine Griezmann",
+    hint: "French forward known for his technical skills and playing for Barcelona",
+  },
+  {
+    word: "Eden Hazard",
+    hint: "Belgian winger who currently plays for Real Madrid",
+  },
+  {
+    word: "Sadio Mané",
+    hint: "Senegalese forward who plays for Liverpool and is known for his pace and goal-scoring ability",
+  },
+  {
+    word: "Paul Pogba",
+    hint: "French midfielder who plays for Manchester United and the French national team",
+  },
+  {
+    word: "Gareth Bale",
+    hint: "Welsh winger who has played for Real Madrid and Tottenham Hotspur",
+  },
+  {
+    word: "Erling Haaland",
+    hint: "Norwegian striker who currently plays for Borussia Dortmund",
+  },
+  {
+    word: "Romelu Lukaku",
+    hint: "Belgian forward who plays for Chelsea and the Belgian national team",
+  },
+  {
+    word: "Son Heung-min",
+    hint: "South Korean forward who plays for Tottenham Hotspur",
+  },
 ];
 var correctWord, timer;
 
